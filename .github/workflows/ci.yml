@@ -32,6 +32,7 @@ jobs:
           name: code-coverage
           path: coverage
       - name: Upload Build Folder
+        if: github.event_name == 'push'
         uses: actions/upload-artifact@v1
         with:
           name: build
