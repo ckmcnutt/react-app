@@ -31,15 +31,15 @@ jobs:
         with:
           name: code-coverage
           path: coverage
+      - name: Build Project
+        if: github.event_name == 'push'
+        run: npm run build
       - name: Upload Build Folder
         if: github.event_name == 'push'
         uses: actions/upload-artifact@v1
         with:
           name: build
           path: build
-      - name: Build Project
-        if: github.event_name == 'push'
-        run: npm run build
       - name: Deploy Staging
         if: github.event_name == 'push'
         run: npx surge --project ./build --domain zesty-elbow.surge.sh
