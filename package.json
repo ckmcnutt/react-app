@@ -12,6 +12,10 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.2.3",
+    "@commitlint/config-conventional": "^16.2.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^4.3.8",
     "prettier": "2.6.0",
     "semantic-release": "^19.0.2"
   },
@@ -22,6 +26,12 @@
     "eject": "react-scripts eject",
     "format:check": "prettier --check \"**/*.{js,jsx,yml,yaml,json,css,scss,md}\"",
     "format": "prettier --write \"**/*.{js,jsx,yml,yaml,json,css,scss,md}\""
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "prepare-commit-msg": "exec < /dev/tty && npx cz --hook || true"
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -40,5 +50,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
