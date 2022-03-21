@@ -4,14 +4,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./.github/actions/issue
-        with:
-          token: ${{secrets.GITHUB_TOKEN}}
-          title: Title
-          body: Body
-          assignes: |
-            ckmcnutt
-            bot
+      # - uses: ./.github/actions/issue
+      #   with:
+      #     token: ${{secrets.GITHUB_TOKEN}}
+      #     title: Title
+      #     body: Body
+      #     assignes: |
+      #       ckmcnutt
+      #       bot
       - uses: ./.github/actions/hello-docker
         id: hello
         with:
