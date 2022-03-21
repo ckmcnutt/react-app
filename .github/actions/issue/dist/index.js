@@ -943,6 +943,8 @@ exports.getIDToken = getIDToken;
 const core = __webpack_require__(470);
 const github = __webpack_require__(470);
 
+main();
+
 async function main() {
   try {
     const token = core.getInput("token");
