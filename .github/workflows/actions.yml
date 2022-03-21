@@ -12,7 +12,7 @@ jobs:
           assignes: |
             ckmcnutt
             bot
-      - uses: ./.github/actions/hello
+      - uses: ./.github/actions/hello-docker
         id: hello
         with:
           who-to-greet: "Christopher"
