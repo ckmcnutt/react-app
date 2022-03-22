@@ -19,7 +19,7 @@ jobs:
             ${{runner.os}}-node_cache-
       - run: npm ci
       - run: npm run build
-      - name: Upload Build Folder
+      - name: Upload Build Artifacts
         uses: actions/upload-artifact@v1
         with:
           name: build
