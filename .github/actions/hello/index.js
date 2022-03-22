@@ -8,17 +8,17 @@ try {
   core.error("Test error message");
 
   const name = core.getInput("who-to-greet");
-  core.setSecret(name)
+  core.setSecret(name);
   console.log(`Hello ${name}!`);
 
   const time = new Date();
   core.setOutput("time", time.toTimeString());
 
-  core.startGroup("Logging github object")
+  core.startGroup("Logging github object");
   console.log(JSON.stringify(github, null, "\t"));
   core.endGroup();
 
-  core.exportVariable("HELLO", "hello world!")
+  core.exportVariable("HELLO", "hello world!");
 } catch (error) {
-    core.setFailed(error.message);
+  core.setFailed(error.message);
 }
