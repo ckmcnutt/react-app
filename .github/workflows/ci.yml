@@ -1,5 +1,5 @@
 name: CI
-on: [push]
+on: [push, pull_request]
 jobs:
   Build:
     runs-on: ubuntu-latest
@@ -19,6 +19,11 @@ jobs:
             ${{runner.os}}-node_cache-
       - run: npm ci
       - run: npm run build
+      - name: Upload Build Folder
+        uses: actions/upload-artifact@v1
+        with:
+          name: build
+          path: build
   Scan:
     runs-on: ubuntu-latest
     permissions:
@@ -58,8 +63,12 @@ jobs:
       - run: npm test -- --coverage
         env:
           CI: true
-      - name: Upload Test Coverage
+      - name: Upload Test Coverage Artifacts
         uses: actions/upload-artifact@v1
         with:
           name: code-coverage
           path: coverage
+      - name: Upload Test Coverage Reports
+        run: npx codecov
+        env:
+          CODECOV_TOKEN: ${{secrets.CODECOV_TOKEN}}
