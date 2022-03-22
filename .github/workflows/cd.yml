@@ -1,5 +1,10 @@
-name: CI
-on: [pull_request]
+name: CD
+on:
+  workflow_run:
+    workflows: ["CI"]
+    branches: ["main"]
+    types:
+      - completed
 jobs:
   Deploy:
     runs-on: ubuntu-latest
